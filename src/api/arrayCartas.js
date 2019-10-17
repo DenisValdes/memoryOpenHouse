@@ -224,10 +224,15 @@ let cartas = [
     }
 ]
 
-function shuffle(cartas) {
-    cartas.sort(() => Math.random() - 0.5);
-}
+function shuffle() {
+    for (let i = cartas.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [cartas[i], cartas[j]] = [cartas[j], cartas[i]];
+    }
+}  
 
-let myPromise = new Promise(function(resolve, reject){
-    return myPromise;
- })
+let getCards = () => {
+    return new Promise ((resolve, reject) => {
+        resolve(cartas)
+    })
+}
