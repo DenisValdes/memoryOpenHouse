@@ -223,3 +223,11 @@ let cartas = [
         
     }
 ]
+
+function shuffle(cartas) {
+    cartas.sort(() => Math.random() - 0.5);
+}
+
+let myPromise = new Promise(function(resolve, reject){
+    return myPromise;
+ })
