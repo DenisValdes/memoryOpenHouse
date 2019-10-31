@@ -7,36 +7,78 @@ import Card from './Components/Card.js';
 class App extends React.Component {
 
   state = {
-    card1: null,
-    card2: null,
-    cards: [],
-    coincidencia: null
+    carta1: null,
+    carta2: null,
+    cartas: [],
+    encontrada: null
   }
 
   componentDidMount() {
     getCartas().then((Response) => {
-      this.setState(() => { return { cards: Response } })
+      this.setState(() => { return { cartas: Response } })
     });
   }
 
-  cartaClick = (cartaSelect) => {
-    console.log(cartaSelect)
-    cartaSelect.estado = 'play'
+  cartaClick = (cartaElegida) => {
+    let carta1 = this.state.carta1;
+    let carta2 = this.state.carta2;
 
-    if (this.state.card1 === null) {
-      this.setState(() => {
-        return { card1: cartaSelect}
-      })
-    }else if (this.state.card2 === null) {
-      this.setState(() => {
-        return { card2: cartaSelect }
-      })
-    } else {
-      if (this.state.card1.idPar === this.state.card2.idPar) {
-        console.log('son pares')
+    if (cartaElegida.estado === 'oculta') {
+
+      cartaElegida.estado = 'jugando'
+
+      if (carta1 === null) {
+
+        this.setState(() => ({ carta1: cartaElegida }))
+
+      } else if (carta2 === null) {
+
+        this.setState(() => ({ carta2: cartaElegida }))
+
+        if ( carta1.idPar === cartaElegida.idPar ) {
+
+          this.setState(prevState => ({
+            carta2: { ...prevState.carta2,  estado: 'encontrada', },
+            cartas: prevState.cartas.map(
+              el => el.id === carta1.id ? { ...el, estado: 'encontrada' }: el
+            ),
+            encontrada: true
+          }))
+
+          setTimeout(() => {
+            this.setState(() => ({
+              encontrada: false
+            }))
+
+          }, 1000);
+
+        } else {
+
+          this.setState(prevState => ({
+            carta2: { ...prevState.carta2, estado: 'no-encontrada' },
+            carta1: { ...prevState.carta1, estado: 'no-encontrada' },
+            cartas: prevState.cartas.map(
+              el => el.id === carta1.id ? { ...el, estado: 'no-encontrada' }: el
+            )
+          }))
+        }
+
       } else {
-        console.log('No son pares dennis')
-        cartaSelect.estado = 'oculta'
+
+        if (carta1.estado === 'no-encontrada' && carta2.estado === 'no-encontrada') {
+
+          this.setState(prevState => ({
+            cartas: prevState.cartas.map(
+              el => el.id === carta1.id || el.id === carta2.id ? { ...el, estado: 'oculta' }: el
+            )
+          }))
+
+        }
+
+        this.setState(() => ({
+          carta1: cartaElegida,
+          carta2: null
+        }))
       }
     }
   }
@@ -44,7 +86,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        {this.state.cards.map((carta) => {
+        {this.state.cartas.map((carta) => {
           return (
             <Card key={carta.id} carta={carta} cartaClick={this.cartaClick}></Card>
           )

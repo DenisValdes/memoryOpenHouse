@@ -1,9 +1,8 @@
+import imageMarce from './comodin.jfif';
 
-function getCartas() {
-    return new Promise((resolve, reject) => {
-      resolve(Cartas)
-    })
-} 
+function shuffle(Cartas) {
+    Cartas.sort(() => Math.random() - 0.5);
+}
 
 const Cartas = [
     {
@@ -204,18 +203,40 @@ const Cartas = [
     {
         id: 29,
         foto:"",
-        texto:"BONUS POINT",
+        texto:"HALLOWEEN POINT",
         idPar: 15,
         estado:"oculta"  
     },
     {
         id: 30,
-        foto:"https://drive.google.com/open?id=19iKTrsqn8YNJhG5Vf405be1saBSkDXQa",
+        foto: imageMarce,
         texto:"",
         idPar: 15,
         estado:"oculta"
+    }, 
+    {
+        id: 31,
+        foto:"",
+        texto:"HALLOWEEN POINT",
+        idPar: 16,
+        estado:"oculta"  
+    },
+    {
+        id: 32,
+        foto:"https://drive.google.com/open?id=19iKTrsqn8YNJhG5Vf405be1saBSkDXQa",
+        texto:"",
+        idPar: 16,
+        estado:"oculta"
     }
 ];
+
+shuffle(Cartas);
+
+function getCartas() {
+    return new Promise((resolve, reject) => {
+      resolve(Cartas)
+    })
+} 
 
 export {
     getCartas
