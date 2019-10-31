@@ -43,7 +43,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="app" >
+      <div className="app">
         {this.state.cards.map((carta) => {
           return (
             <Card key={carta.id} carta={carta} cartaClick={this.cartaClick}></Card>

@@ -13,8 +13,6 @@ class Card extends React.Component {
     let carta = this.props.carta
 
     return (
-        <div  className="card-content">
-          {
               carta.estado === 'oculta' ?
                 <div onClick={this.onClickCard} className="card-hide"></div>
                 :
@@ -22,8 +20,6 @@ class Card extends React.Component {
                   <img src={carta.foto} alt={carta.texto} />
                   <h5>{carta.texto}</h5>
                 </div>
-          }
-        </div>
     )
   }
 }
