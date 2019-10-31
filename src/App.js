@@ -1,58 +1,54 @@
 import React from 'react';
 import './App.css';
-import { getCards } from "./api/arrayCartas"
+import { getCartas } from './api/arrayCartas';
 
-import Card from './components/Card'
+import Card from './Components/Card.js';
 
 class App extends React.Component {
 
   state = {
-    cartas: null
+    card1: null,
+    card2: null,
+    cards: [],
+    coincidencia: null
   }
 
   componentDidMount() {
-
-    getCards().then((response) => {
-        this.setState( () => {
-        return { cartas: response }
-        })
-    })
-
-    this.traerCartas();
+    getCartas().then((Response) => {
+      this.setState(() => { return { cards: Response } })
+    });
   }
 
-  traerCartas = () => {
+  cartaClick = (cartaSelect) => {
+    console.log(cartaSelect)
+    cartaSelect.estado = 'play'
 
-    fetch(myPromise)
-      .then((response) => response.json())
-      .then((response) => {
-
-        if (response.data) {
-            this.setState( () => {
-                return { cartas: response.data }
-            })
-        }
+    if (this.state.card1 === null) {
+      this.setState(() => {
+        return { card1: cartaSelect}
       })
-      .catch((error) => {
-        console.log('Se ha producido un error');
-        console.log(error);
+    }else if (this.state.card2 === null) {
+      this.setState(() => {
+        return { card2: cartaSelect }
       })
+    } else {
+      if (this.state.card1.idPar === this.state.card2.idPar) {
+        console.log('Son pares dennis')
+      } else {
+        console.log('No son pares dennis')
+        cartaSelect.estado = 'oculta'
+      }
+    }
   }
 
   render() {
     return (
-      <div className="app">
-        <div className='container'>
-          <div className='row'>
-            {this.state.cartas ?
-              this.state.cartas.map((cartas) => {
-                console.log(cartas)
-                return (
-                  <Card cartas = {cartas} ></Card>
-                )
-              }) : <h2>No hay datos disponibles</h2>}
-          </div>
-        </div>
+      <div className="app" >
+        {this.state.cards.map((carta) => {
+          return (
+            <Card key={carta.id} carta={carta} cartaClick={this.cartaClick}></Card>
+          )
+        })}
       </div>
     );
   }

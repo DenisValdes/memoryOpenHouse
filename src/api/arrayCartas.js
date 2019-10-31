@@ -1,238 +1,208 @@
-let cartas = [
+
+function getCartas() {
+    return new Promise((resolve, reject) => {
+      resolve(Cartas)
+    })
+} 
+
+const Cartas = [
     {
         id: 1,
-        foto:"",
+        foto: null,
         texto:"Geogebra",
         idPar: 1,
-        estado:"oculta"
-       
+        estado: "oculta"
     },
     {
         id: 2,
         foto:"https://drive.google.com/open?id=10k3Ko64Pk6ESEU1ugaxXJeunlKLFjDJd",
-        texto:"",
+        texto:null,
         idPar: 1,
         estado:"oculta"
-       
     },
     {
         id: 3,
-        foto:"",
+        foto:null,
         texto:"Triangulo isosceles",
         idPar: 2,
         estado:"oculta"
-       
     },
     {
         id: 4,
         foto:"https://drive.google.com/open?id=1ptOVrBJiFIlVLpbS9JLC-9c24kwratzj",
-        texto:"",
+        texto:null,
         idPar: 2,
-        estado:"oculta"
-       
+        estado:"oculta" 
     },
     {
         id: 5,
-        foto:"",
+        foto:null,
         texto:"Triángulo Equilátero",
         idPar: 3,
         estado:"oculta"
-       
     },
     {
         id: 6,
         foto:"https://drive.google.com/open?id=1HMv_gsk2Ndua_HZSrq1f3RSrZRCt0Wnq",
-        texto:"",
+        texto:null,
         idPar: 3,
-        estado:"oculta"
-       
+        estado:"oculta" 
     },
     {
         id: 7,
-        foto:"",
+        foto:null,
         texto:"Triángulo Escaleno",
         idPar: 4,
-        estado:"oculta"
-       
+        estado:"oculta" 
     },
     {
         id: 8,
         foto:"https://drive.google.com/open?id=1dePCekYIBKeSdvb2AFW57dDQ2Tge0HFe",
-        texto:"",
+        texto:null,
         idPar: 4,
         estado:"oculta"
-       
     },
     {
         id: 9,
-        foto:"",
+        foto:null,
         texto:"Arco Capaz",
         idPar: 5,
         estado:"oculta"
-       
     },
     {
         id: 10,
         foto:"https://drive.google.com/open?id=1zzaWenZrZ96qBmzqAFDW-SSbVBtpLADc",
-        texto:"",
+        texto:null,
         idPar: 5,
         estado:"oculta"
-        
     },{
         id: 11,
-        foto:"",
+        foto:null,
         texto:"Homotecia",
         idPar: 6,
         estado:"oculta"
-        
     },
     {
         id: 12,
         foto:"https://drive.google.com/open?id=1d5ZBu13CIM_8LBTk-seDyK9P0nxsfu4w",
-        texto:"",
+        texto:null,
         idPar: 6,
         estado:"oculta"
-        
     },
     {
         id: 13,
-        foto:"",
+        foto:null,
         texto:"Dodecaedro",
         idPar: 7,
         estado:"oculta"
-        
     },
     {
         id: 14,
         foto:"https://drive.google.com/open?id=10g2J2ty1ANjcm4npOle3BKeGfu0qZV36",
-        texto:"",
+        texto:null,
         idPar: 7,
         estado:"oculta"
-        
     },
     {
         id: 15,
-        foto:"",
+        foto:null,
         texto:"Teorema de Pitágoras",
         idPar: 8,
         estado:"oculta"
-        
     },
     {
         id: 16,
         foto:"https://drive.google.com/open?id=1sUem9FUBRQcQPzZDuP1TMVxmprgrQi1K",
-        texto:"",
+        texto:null,
         idPar: 8,
         estado:"oculta"
-        
     },
     {
         id: 17,
-        foto:"",
+        foto:null,
         texto:"Pitágoras",
         idPar: 9,
         estado:"oculta"
-        
     },
     {
         id: 18,
         foto:"https://drive.google.com/open?id=1Eo5ZTPFgAksi15q04SUkRiBVuwrUV_6A",
-        texto:"",
+        texto:null,
         idPar: 9,
-        estado:"oculta"
-        
+        estado:"oculta"    
     },
     {
         id: 19,
-        foto:"",
+        foto:null,
         texto:"Mediatriz",
         idPar: 10,
-        estado:"oculta"
-        
+        estado:"oculta"    
     },
     {
         id: 20,
         foto:"https://drive.google.com/open?id=1S4S00qO9vuVP8vlNACdnkpA_YPtea9oH",
-        texto:"",
+        texto:null,
         idPar: 10,
-        estado:"oculta"
-        
+        estado:"oculta"   
     },
     {
         id: 21,
-        foto:"",
+        foto:null,
         texto:"Bisectriz",
         idPar: 11,
         estado:"oculta"
-        
     },
     {
         id: 22,
         foto:"https://drive.google.com/open?id=1euJ09BidCQ2tDmE5SKW_X542RH3pryMG",
-        texto:"",
+        texto:null,
         idPar: 11,
         estado:"oculta"
-        
     },
     {
         id: 23,
-        foto:"",
+        foto:null,
         texto:"Ortocentro",
         idPar: 12,
         estado:"oculta"
-        
     },
     {
         id: 24,
         foto:"https://drive.google.com/open?id=1O49SSmCUkS28WslTIJmUAFirlIyM1cGj",
-        texto:"",
+        texto:null,
         idPar: 12,
         estado:"oculta"
-        
     },
     {
         id: 25,
-        foto:"",
+        foto:null,
         texto:"Paralelogramo tipo",
         idPar: 13,
-        estado:"oculta"
-        
+        estado:"oculta" 
     },
     {
         id: 26,
         foto:"https://drive.google.com/open?id=1qaC5ctRygJxSs9ErOL_KtDovfbhb7BLD",
-        texto:"",
+        texto:null,
         idPar: 13,
-        estado:"oculta"
-        
+        estado:"oculta"  
     },
     {
         id: 27,
-        foto:"",
+        foto:null,
         texto:"Tangente",
         idPar: 14,
-        estado:"oculta"
-        
+        estado:"oculta"  
     },
     {
         id: 28,
         foto:"https://drive.google.com/open?id=19iKTrsqn8YNJhG5Vf405be1saBSkDXQa",
-        texto:"",
+        texto:null,
         idPar: 14,
         estado:"oculta"
-        
     }
-]
+];
 
-function shuffle() {
-    for (let i = cartas.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      [cartas[i], cartas[j]] = [cartas[j], cartas[i]];
-    }
-}  
-
-let getCards = () => {
-    return new Promise ((resolve, reject) => {
-        resolve(cartas)
-    })
+export {
+    getCartas
 }

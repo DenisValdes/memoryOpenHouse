@@ -1,29 +1,29 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-
-import Card from  './Card'
 
 import './Card.css'
 
 class Card extends React.Component {
-
-  static props = {
-    id,
-    foto,
-    texto,
-    idPar,
-    estado
+  
+  onClickCard = () => {
+    this.props.cartaClick(this.props.carta)
   }
-
-  state = {
-    cartaState: false
-  }
-
+  
   render() {
+
+    let carta = this.props.carta
+
     return (
-      <div class="card-hide">
-        <h3>{this.}</h3>
-      </div>
+        <div  className="card-content">
+          {
+              carta.estado === 'oculta' ?
+                <div onClick={this.onClickCard} className="card-hide"></div>
+                :
+                <div onClick={this.onClickCard} className="card-showed">
+                  <img src={carta.foto} alt={carta.texto} />
+                  <h5>{carta.texto}</h5>
+                </div>
+          }
+        </div>
     )
   }
 }
