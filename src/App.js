@@ -33,7 +33,7 @@ class App extends React.Component {
       })
     } else {
       if (this.state.card1.idPar === this.state.card2.idPar) {
-        console.log('Son pares dennis')
+        console.log('son pares')
       } else {
         console.log('No son pares dennis')
         cartaSelect.estado = 'oculta'

@@ -17,8 +17,8 @@ class Card extends React.Component {
                 <div onClick={this.onClickCard} className="card-hide"></div>
                 :
                 <div onClick={this.onClickCard} className="card-showed">
-                  <img src={carta.foto} alt={carta.texto} />
-                  <h5>{carta.texto}</h5>
+                  <img src={carta.foto} alt="" />
+                  <h1>{carta.texto}</h1>
                 </div>
     )
   }
